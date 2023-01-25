@@ -1,4 +1,5 @@
 import { Model, Document, model, Schema } from "mongoose"
+import { hash, compare } from "bcryptjs"
 
 interface UserType extends Document {
     id: string
@@ -67,6 +68,46 @@ const UserSchema = new Schema<UserType, UserModel, UserType>(
     },
     { timestamps: true }
 )
+
+UserSchema.pre("save", async function () {
+    const user = this
+    const hashpass = await hash(user.password, 12)
+    user.password = hashpass
+})
+
+UserSchema.methods.toJSON = function () {
+    const data = this
+    const user = data.toObject()
+
+    user.id = user._id
+    delete user._id
+    delete user.__v
+    delete user.password
+
+    return user
+}
+
+UserSchema.methods.compareUsername = async function (username) {
+    const user = await User.findOne({ username: username })
+    if (user) {
+        return true
+    } else {
+        return false
+    }
+}
+
+UserSchema.methods.compareEmail = async function (email) {
+    const user = await User.findOne({ email: email })
+    if (user) {
+        return true
+    } else {
+        return false
+    }
+}
+
+UserSchema.methods.comparePass = async function (password) {
+    return await compare(password, this.password)
+}
 
 const User = model<UserType, UserModel>("users", UserSchema)
 export default User
