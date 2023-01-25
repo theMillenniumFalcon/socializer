@@ -2,7 +2,9 @@ import 'dotenv-safe/config'
 import express from "express"
 import cors from "cors"
 
-const PORT = process.env.PORT
+import { BaseRouter } from "./routes"
+
+const PORT = parseInt(process.env.PORT)
 
 const main = async () => {
     const app = express()
@@ -19,6 +21,8 @@ const main = async () => {
     app.get('/', (_req, res) => {
         res.send("Server is working fine!")
     })
+
+    app.use("/", BaseRouter)
 
     const server = app.listen(PORT, () => {
         console.log(`Server listening on port ${PORT}`)
