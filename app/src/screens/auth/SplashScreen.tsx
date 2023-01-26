@@ -1,5 +1,6 @@
 import { StackNavigationProp } from "@react-navigation/stack"
 import React from "react"
+
 import { FullScreenCol, Img, TextSTC } from "../../styles/global.stc"
 import { ButtonSPLASH } from "../../styles/splash-screen.stc"
 import { BaseRouteType } from "../../types/route-types"
