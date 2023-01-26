@@ -76,7 +76,7 @@ export const uploadDP = async (data: any, token: string | null) => {
         uri,
         name: `photo.${fileType}`,
         type: `image/${fileType}`,
-    })
+    } as any)
 
     try {
         const result = await axios({
@@ -112,7 +112,7 @@ export const uploadBanner = async (data: any, token: string | null) => {
         uri,
         name: `photo.${fileType}`,
         type: `image/${fileType}`,
-    })
+    } as any)
 
     try {
         const result = await axios({

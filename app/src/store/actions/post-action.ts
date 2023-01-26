@@ -13,7 +13,7 @@ export const createPost = async (data: any, token: string | null) => {
         uri,
         name: `photo.${fileType}`,
         type: data.post_type == "photo" ? `image/${fileType}` : `video/${fileType}`,
-    })
+    } as any)
 
     formData.append("uid", data.uid)
     formData.append("body", data.body)
