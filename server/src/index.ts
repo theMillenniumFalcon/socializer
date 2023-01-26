@@ -6,7 +6,7 @@ import path from 'path'
 import { BaseRouter } from "./routes"
 import { connectDB } from "./database/database-connection"
 
-const PORT = parseInt(process.env.PORT)
+const PORT = parseInt(process.env.PORT) || 4000
 
 const main = async () => {
     await connectDB()
