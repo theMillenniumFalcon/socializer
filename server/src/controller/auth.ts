@@ -1,6 +1,6 @@
 import { sign } from "jsonwebtoken"
 import User from "../model/user"
-import { IP } from "../utils/utils"
+import { IP } from "../utils/ip"
 import { Context } from "../types/types"
 
 export const signUpUser = async ({ req, res }: Context) => {

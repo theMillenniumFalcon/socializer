@@ -1,6 +1,6 @@
 import { Context } from "../types/types"
 import Post from "../model/post"
-import { IP } from "../utils/utils"
+import { IP } from "../utils/ip"
 
 export const getAllPost = async ({ res }: Context | any) => {
     try {
