@@ -1,6 +1,7 @@
 import 'dotenv-safe/config'
 import express from "express"
 import cors from "cors"
+import path from 'path'
 
 import { BaseRouter } from "./routes"
 import { connectDB } from "./database/database-connection"
@@ -25,6 +26,7 @@ const main = async () => {
         res.send("Server is working fine!")
     })
 
+    app.use('/media', express.static(path.join(__dirname, 'media')))
     app.use("/", BaseRouter)
 
     const server = app.listen(PORT, () => {
