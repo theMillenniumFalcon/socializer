@@ -3,10 +3,13 @@ import express from "express"
 import cors from "cors"
 
 import { BaseRouter } from "./routes"
+import { connectDB } from "./database/database-connection"
 
 const PORT = parseInt(process.env.PORT)
 
 const main = async () => {
+    await connectDB()
+
     const app = express()
 
     app.set("trust proxy", 1)
