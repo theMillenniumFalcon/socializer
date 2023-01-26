@@ -36,6 +36,8 @@ const main = async () => {
         console.log(`Logged Error: ${err}`)
         server.close(() => process.exit(1))
     })
+
+    require('./post-server/post-server')
 }
 main().catch((error) => {
     console.error(error)
