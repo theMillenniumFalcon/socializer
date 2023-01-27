@@ -37,9 +37,12 @@ const Signup = ({ navigation, createUser, signupError }: Props) => {
     const validateUsername = async () => {
         setUser({ ...user, username: fixUsername(fixUsername(user.username)) })
         const url = API_ENDPOINT + `auth/validate-username/${user.username}`
+        console.log(url)
 
         try {
             const check = await axios.get(url)
+
+            console.log(check)
 
             if (!check.data.userExist && user.username.length >= 3) {
                 setStep(step + 1)
